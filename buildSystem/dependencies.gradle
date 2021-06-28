@@ -1,0 +1,37 @@
+ext {
+    lifecycleRuntimeKtx = '2.3.1'
+    constraintlayoutVersion = '2.0.4'
+    ktxVersion = '1.5.0'
+    androidxAppcompatVersion = '1.3.0'
+    materialVersion = '1.3.0'
+    navigationVersion = "2.3.3"
+    legacySupportV4Version = "1.0.0"
+
+    hiltVersion = "2.31.2-alpha"
+    hiltCompilerVersion = "1.0.0-alpha03"
+
+    apolloVersion = "2.5.4"
+
+    generalDependencies = [
+            lifecycleRuntimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtx",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion",
+            coreKtx: "androidx.core:core-ktx:$ktxVersion",
+            androidxAppcompat: "androidx.appcompat:appcompat:$androidxAppcompatVersion",
+            androidXLegacySupport: "androidx.legacy:legacy-support-v4:$legacySupportV4Version",
+            material: "com.google.android.material:material:$materialVersion",
+            navigationFragmentKtx: "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationUiKtx: "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+
+    ]
+
+    injectionDependencies = [
+            hiltLifeCycleViewModel: "androidx.hilt:hilt-lifecycle-viewmodel:$hiltCompilerVersion",
+            hilt: "com.google.dagger:hilt-android:$hiltVersion",
+            hiltCompiler: "com.google.dagger:hilt-compiler:$hiltVersion"
+    ]
+
+    connectionDependencies = [
+            apolloRuntime: "com.apollographql.apollo:apollo-runtime:$apolloVersion",
+            apolloCoroutines: "com.apollographql.apollo:apollo-coroutines-support:$apolloVersion"
+    ]
+}

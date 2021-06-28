@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/characters_list_fragment">
+
+    <fragment
+        android:id="@+id/characters_list_fragment"
+        android:name="com.android.rickandmorty.presentation.ui.characters.CharactersFragment"
+        android:label="Personajes Rick and Morty"
+        tools:layout="@layout/fragment_characters">
+
+        <action
+            android:id="@+id/navigate_to_character_details_fragment"
+            app:destination="@id/character_details_fragment" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/character_details_fragment"
+        android:name="com.android.rickandmorty.presentation.ui.characterDetail.CharacterDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_character_detail">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </dialog>
+
+</navigation>

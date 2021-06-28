@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id("com.apollographql.apollo").version("2.5.4")
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.android.rickandmorty"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+}
+
+apollo {
+    // instruct the compiler to generate Kotlin models
+    generateKotlinModels.set(true)
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation rootProject.ext.generalDependencies.coreKtx
+    implementation rootProject.ext.generalDependencies.androidxAppcompat
+    implementation rootProject.ext.generalDependencies.material
+    implementation rootProject.ext.generalDependencies.androidXLegacySupport
+    implementation rootProject.ext.generalDependencies.constraintlayout
+    // Lifecycle Runtime
+    implementation rootProject.ext.generalDependencies.lifecycleRuntimeKtx
+
+    //navigation
+    implementation rootProject.ext.generalDependencies.navigationFragmentKtx
+    implementation rootProject.ext.generalDependencies.navigationUiKtx
+
+    //apollo graphQL
+    implementation rootProject.ext.connectionDependencies.apolloRuntime
+    implementation rootProject.ext.connectionDependencies.apolloCoroutines
+
+    // Coroutine Image Loader
+    implementation "io.coil-kt:coil:1.1.1"
+
+    //hilt
+    implementation rootProject.ext.injectionDependencies.hilt
+    kapt rootProject.ext.injectionDependencies.hiltCompiler
+    implementation rootProject.ext.injectionDependencies.hiltLifeCycleViewModel
+
+    //test
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
